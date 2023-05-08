@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Requirement System</title>
+    
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/srs.css">
+    
+</head>
+<body>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2">
+                <nav id="navbar-example3" class="navbar navbar-light flex-column align-items-stretch scroll-bar">
+                    <p class="navbar-brand" style="text-align: center; padding-top: 40px; color: #03A9F4;"><strong>Online Examination <br> System</strong></p> <hr style="border: 2px solid lightgray; width: 100%">
+                    <nav class="nav nav-pills flex-column" style="padding-top: 20px; font-weight: bold;">
+                      <a class="nav-link" href="#home">Home</a>
+                      <a class="nav-link" href="#content-table">Table of contents</a>
+                      <a class="nav-link" href="#Introduction">Introduction</a>
+                      <a class="nav-link" href="#Description">Overall Description</a>
+                      <a class="nav-link" href="#Interface-requirements">External Interface Requirements</a>
+                      <a class="nav-link" href="#System-features">System Features</a>
+                      <a class="nav-link" href="#Nonfunctional-requirements">Other Nonfunctional Requirements</a>
+                      <a class="nav-link" href="#Other-requirements">Other Requirements</a>
+                      <a class="nav-link" href="#Appendix">Appendix</a>
+                    </nav>
+                  </nav>
+            </div>
+            <div class="col-10">
+                <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-offset="0" tabindex="0">
+                    
+                    <div id="home" class="page-1 text-end" >
+                        <hr>
+                        <div class="row mt-4">
+                          <div class="col-7 offset-5">
+                            <h1 class="text-end fw-bold">Software Requirements<br>Specification</h1>
+                            <br><br>
+                            <h2 class="fw-bold">for</h2>
+                            <br><br>
+                            <h1 class="fw-bold">Online Examination System</h1>
+                            <br><br>
+                            <h5 class="fw-bold">Version 1.0</h5>
+                            <br><br>
+                            <h5 class="fw-bold">Prepared by: Muhammad Rafsan Kabir 2011180042</h5>
+                            <h5 class="fw-bold">Rashidul Hassan Borshon 1931801642</h5>
+                            <br><br>
+                            <h5 class="fw-bold">North South University</h5>
+                            <br><br>
+                            <h5 class="fw-bold">24/06/2022</h5>
+                          </div>
+                        </div>
+                    </div>
+                    <br>
+                  <div style="break-after: page"></div>
+
+                  <div id="content-table" class="page-2">
+                    <h5>Table of Contents</h5>
+                    <div class="part">
+                      <p class="dots fw-bold" style="font-size: 15px;">Table of Contents</p>
+                      <p class="fw-bold">2</p>
+                    </div>
+                    <div>
+                      <div class="part">
+                        <p class="dots fw-bold" style="font-size: 15px;">1.  Introduction</p>
+                        <p class="fw-bold">3</p>
+                      </div>
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">1.1  Purpose</p>
+                        <p>3</p>
+                      </div>
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">1.2  Document Conventions</p>
+                        <p>3</p>
+                      </div>
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">1.3  Intended Audience and Reading Suggestion</p>
+                        <p>3</p>
+                      </div>
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">1.4  Product Scope</p>
+                        <p>3</p>
+                      </div>    
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">1.5  References</p>
+                        <p>3</p>
+                      </div>                     
+                    </div>
+
+                    <div>
+                      <div class="part">
+                        <p class="dots fw-bold" style="font-size: 15px;">2.  Overall Description</p>
+                        <p class="fw-bold">4</p>
+                      </div>
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">2.1  Product Perspective</p>
+                        <p>4</p>
+                      </div>
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">2.2  Product Functions</p>
+                        <p>4</p>
+                      </div>
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">2.3  User Classes and Characteristics</p>
+                        <p>4</p>
+                      </div>
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">2.4  Operating Environment</p>
+                        <p>4</p>
+                      </div>    
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">2.5  Design and Implementation Constraints</p>
+                        <p>4</p>
+                      </div>    
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">2.6  User Documentation</p>
+                        <p>4</p>
+                      </div>    
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">2.7  Assumptions and Dependencies</p>
+                        <p>5</p>
+                      </div>                   
+                    </div>
+
+                    <div>
+                      <div class="part">
+                        <p class="dots fw-bold" style="font-size: 15px;">3.  External Interfacem Requirements</p>
+                        <p class="fw-bold">5</p>
+                      </div>
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">3.1  User Interfaces</p>
+                        <p>5</p>
+                      </div>
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">3.2  Hardware Interfaces</p>
+                        <p>5</p>
+                      </div>
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">3.3  Software Interfaces</p>
+                        <p>5</p>
+                      </div>
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">3.4  Communication Interfaces</p>
+                        <p>5</p>
+                      </div>                   
+                    </div>
+
+                    <div>
+                      <div class="part">
+                        <p class="dots fw-bold" style="font-size: 15px;">4.  System Features</p>
+                        <p class="fw-bold">6</p>
+                      </div>
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">4.1  Login using Google</p>
+                        <p>6</p>
+                      </div>
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">4.2  Create an exam cohort</p>
+                        <p>6</p>
+                      </div>
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">4.3  Create assessments within a cohort</p>
+                        <p>7</p>
+                      </div>
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">4.4  Add users (students) to the cohort</p>
+                        <p>7</p>
+                      </div>    
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">4.5  Edit assessments</p>
+                        <p>8</p>
+                      </div>    
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">4.6  Add MCQs to the assessment</p>
+                        <p>8</p>
+                      </div>    
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">4.7  Add micro-viva to the assessment</p>
+                        <p>9</p>
+                      </div> 
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">4.8  Download a marksheet</p>
+                        <p>9</p>
+                      </div>    
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">4.9  Take the exam</p>
+                        <p>10</p>
+                      </div>    
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">4.10  Logout</p>
+                        <p>10</p>
+                      </div>                  
+                    </div>
+
+                    <div>
+                      <div class="part">
+                        <p class="dots fw-bold" style="font-size: 15px;">5.  Other Nonfunctional Requirements</p>
+                        <p class="fw-bold">11</p>
+                      </div>
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">5.1  Performance Requirements</p>
+                        <p>11</p>
+                      </div>
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">5.2  Safety Requirement</p>
+                        <p>11</p>
+                      </div>
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">5.3  Security Requirements</p>
+                        <p>11</p>
+                      </div>
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">5.4  Software Quality Attributes</p>
+                        <p>11</p>
+                      </div>    
+                      <div class="part">
+                        <p class="dots" style="margin-left: 20px;">5.5  Business Rules</p>
+                        <p>11</p>
+                      </div>                  
+                    </div>
+
+                    <div>
+                      <div class="part">
+                        <p class="dots fw-bold" style="font-size: 15px;">6.  Other Requirements</p>
+                        <p class="fw-bold">11</p>
+                      </div>                  
+                    </div>
+                    <div>
+                      <div class="part">
+                        <p class="dots fw-bold" style="font-size: 15px;">Appendix A: Glossary</p>
+                        <p class="fw-bold">12</p>
+                      </div>                  
+                    </div>
+                    <div>
+                      <div class="part">
+                        <p class="dots fw-bold" style="font-size: 15px;">Appendix B: Analysis Models</p>
+                        <p class="fw-bold">12</p>
+                      </div>   
+                      <div class="part">
+                        <p class="dots fw-bold" style="font-size: 15px;">Appendix C: To Be Determined List</p>
+                        <p class="fw-bold">12</p>
+                      </div>                
+                    </div>
+                  </div>
+                  <br> <br>
+                  <div style="break-after: page"></div>
+
+                  <div id="Introduction">
+                    <div class="sec1.1">
+                      <h4 class="fw-bold">1. Introduction</h4> <br>
+                      <h5 class="fw-bold"> 1.1 Purpose</h5>
+                      <p><i>The primary purpose to develop this system is to optimize the online examination system for any organization. An exam evaluator can create an exam-cohort and add users to it, where the users can participate in online examination in the form of MCQ and micro-viva. The system will automatically evaluate all the answers and generate a marksheet which is downloadable</i></p>
+                    </div>
+                    <div class="sec1.2">
+                      <h5 class="fw-bold"> 1.2 Document Conventions</h5>
+                      <p><i>The font used in this document is Arial having size 16. The text is made bolt for the highlighting purpose so that it can be easily differentiated. In this document, every functionality is equally important and every requirement has its own priority.</i></p>
+                    </div>
+                    <div class="sec1.3">
+                      <h5 class="fw-bold"> 1.3	Intended Audience and Reading Suggestions</h5>
+                      <p><i>The document is meant for the developers, testers, designers and users which can be anyone willing to use the system. This document will serve as a reference document for every team which is partaking in making the project. They will coordinate every activity that take place in the software engineering process and will be guided by Dr. Nabeel Mohammed.</i></p>
+                    </div>
+                    <div class="sec1.4">
+                      <h5 class="fw-bold"> 1.4 Product Scope</h5>
+                      <p><i>Online Examination System enables the users to have a robust exam taking facilities and features at its disposal. It resolves the typical issues of manually conducting examinations where both teachers and students have to attend. The objective of this application is to allow users to create and participate in examinations at their fingertips sitting anywhere in the world. This kind of system is specially designed for educational institutions to help in taking examinations smoothly.</i></p>
+                    </div>
+                    <div class="sec1.5">
+                      <h5 class="fw-bold"> 1.5 References</h5>
+                      <a href="https://docs.djangoproject.com/en/4.0/"><i>Django</i></a> <br>
+                      <a href="https://getbootstrap.com/docs/5.1/getting-started/introduction/"><i>Bootstrap</i></a> <br>
+                      <a href="https://console.cloud.google.com/apis/dashboard?project=dogwood-melody-353716"><i>Google API</i></a>
+                    </div>
+                  </div>
+                  <br> <br>
+                  <div style="break-after: page"></div>
+                  
+                  <div id="Description">
+                    <div>
+                      <h4 class="fw-bold">2.	Overall Description</h4>
+                      <br>
+                      <h5 class="fw-bold">2.1	Product Perspective</h5>
+                      <p><i>Online examination system is created to ease the complications of conducting and partaking in an online examination. Users can log into their account and create an exam-cohort where they can add other users to conduct an online examination. The system is self-contained.</i></p>
+                    </div>
+                    <div>
+                      <h5 class="fw-bold">2.2	Product Functions</h5>
+                      <p style="margin-bottom: 2px;"><i>The system’s functions are super user-friendly so that it is easy for the users to operate. The major functions of the software are provided below.</i></p> 
+                      <ul><i>
+                        <li>	All users can create an account and login using google account.</li>
+                        <li>	Those who created an exam-cohort will have editing abilities i.e. create, edit, delete assessments, add other users to the cohort.</li>
+                        <li>	Other users can sit for the exam and also create an exam-cohort if they want.</li>
+                        <li>	The system admin can delete any users at any moment.</li></i>
+                      </ul>
+                    </div>
+                    <div>
+                      <h5 class="fw-bold">2.3	User Classes and Characteristics</h5>
+                      <p><i>All users can access the software Online Examination System from two different platforms: Web app and Android app. Android users can only sit for an exam, not create one. There are two different types of actors, they are system admin and users. System admins has the highest power i.e. they can add or delete account. Users can log into the system. Users such as the evaluators can create an exam-cohort, add students to it and then create, edit assessments. Lastly they can download a spreadsheet of marks. Users such as students can sit for an exam using both the web app and mobile app.</i></p>
+                    </div>
+                    <div>
+                      <h5 class="fw-bold">2.4	Operating Environment</h5>
+                      <ul><i>
+                        <li>Platform supported: Web and Android</li>
+                        <li>Web server: Any operation system with Django 4.1 or newer installed</li>
+                        <li>Android app: Any system with a functional web browser.</li>
+                        <li>Database configuration: SQLite</li></i>
+                      </ul>
+                    </div>
+                    <div>
+                      <h5 class="fw-bold">2.5	Design and Implementation Constraints</h5>
+                      <p><i> We have a web app and android app, but no IOS app for the system. Users can only take the exam through android app. Users cannot use other features inside the mobile app.</i></p>
+                    </div>
+                    <div>
+                      <h5 class="fw-bold">2.6	User Documentation</h5>
+                      <p><i>The product will come with a user manual which will explain how to use the system such as how to create an exam-cohort, how to add students, how to create an assessment, etc.</i></p>
+                    </div>
+                    <div style="break-after: page"></div>
+                    <div>
+                      <h5 class="fw-bold">2.7	Assumptions and Dependencies</h5>
+                      <p><i>Users must have a stable and working internet connection. Web users must have a working browser to use the product. Mobile users must have android version 6+ installed.</i></p>
+                    </div>
+                  </div>
+                  <br> <br>
+
+      
+                  <div id="Interface-requirements">
+                    <div>
+                      <h4 class="fw-bold">3.	External Interface Requirements</h4>
+                      <br>
+                      <h5 class="fw-bold">3.1	User Interfaces</h5>
+                      <p><i>TThe users will start off at the login page where they will find a button of google login. Users can log in using a valid google account. After they are logged in, they can create an exam cohort where they can add other users (students). Inside the cohort the user (evaluator) can create an assessment and add question in the form of MCQs and micro-viva which is editable. After setting an assessment, users (students) can sit for the exam. After due time of the exam, system will automatically calculate the marks and the evaluator will be able to download a marksheet showing the mark breakdown of every student. Evaluators can edit the questions, answers and marks.</i></p>
+                    </div>
+                    <div>
+                      <h5 class="fw-bold">3.2	Hardware Interfaces</h5>
+                      <p><i>Since the mobile application does not have designated hardware, it does not have any hardware interface. The hardware connection between the database server and application is managed by the underlying operating system on the mobile phone.</i></p>
+                    </div>
+                    <div>
+                      <h5 class="fw-bold">3.3	Software Interfaces</h5>
+                      <p><i>The system is self-contained and no data is supposed to share with the third party. The communication of the mobile application between the database consist of only reading the data, no modification is allowed. The communication between the web application and database consist of both reading and modifying.</i></p>
+                    </div>
+                    <div>
+                      <h5 class="fw-bold">3.4	Communications Interfaces</h5>
+                      <p><i>The communication between the different parts of the system is important since they depend on each other. However, in what way the communication is achieved is not important for the system and is therefore handled by the underlying operating system for the mobile application.</i></p>
+                    </div>
+                  </div>
+                  <br> <br>
+                  <div style="break-after: page"></div>
+      
+                  <div id="System-features">
+                    <div>
+                      <h4 class="fw-bold">4.	System Features</h4>
+                      <br>
+                      <h5 class="fw-bold">4.1	Log in using Google</h5>
+                      <p><i>
+                        Use Case: Login using Google <br>
+                        Actor(s): User <br>
+                        Purpose: The user can login to this system using their Google account, and then use this system. <br>
+                        Type: Primary
+                      </i></p>
+                      <div>
+                        <h6><strong>Typical course of events:</strong></h6>
+                        <table>
+                          <tr>
+                            <th>Actor Action</th>
+                            <th>System Response</th>
+                          </tr>
+                          <tr>
+                            <td>1. User clicks the login from login page.</td>
+                            <td>2.	System redirects to the google login page</td>
+                          </tr>
+                          <tr>
+                            <td>3.	User chooses a google account</td>
+                            <td>4.	System will response by verifying the credentials through google API.</td>
+                          </tr>
+                        </table>
+                      </div>
+                      <div style="padding-top: 20px">
+                        <h6><strong>Alternative Course of Events</strong></h6>
+                        <p><i>Section 3: If the user enter incorrect google credentials, the system will redirect to login page.</i> </p>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h5 class="fw-bold">4.2	Create an exam-cohort</h5>
+                      <p><i>
+                        Use Case: Create an exam-cohort <br>
+                        Actor(s): User <br>
+                        Purpose: After logging into the system, the user can create an exam cohort by clicking the "create exam-cohort" button <br>
+                        Type: Primary
+                      </i></p>
+                      <div>
+                        <h6><strong>Typical course of events:</strong></h6>
+                        <table>
+                          <tr>
+                            <th>Actor Action</th>
+                            <th>System Response</th>
+                          </tr>
+                          <tr>
+                            <td>1. User clicks “Create an exam-cohort” button.</td>
+                            <td>2. The system provides the create an exam-cohort form.</td>
+                          </tr>
+                          <tr>
+                            <td>3.	User fills up the necessary information and clicks submit button.</td>
+                            <td>4.	System will show a successful message and the cohort will be added to the dashboard.</td>
+                          </tr>
+                        </table>
+                      </div>
+                      <div style="padding-top: 20px">
+                        <h6><strong>Alternative Course of Events</strong></h6>
+                        <p style="margin-bottom: 0px;"><i>Section 2: The user might not been logged into his/her google account, the system will redirect to the login page</i> </p>
+                        <p><i>Section 4: The system will show an error if the form is not filled properly/if some information is missing.</i> </p>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h5 class="fw-bold">4.3	Create assessments within a cohort</h5>
+                      <p><i>
+                        Use Case: Create assessments within a cohort <br>
+                        Actor(s): Evaluator <br>
+                        Purpose: The evaluator of an exam cohort can create assessments within that cohort.<br>
+                        Type: Primary
+                      </i></p>
+                      <div>
+                        <h6><strong>Typical course of events:</strong></h6>
+                        <table>
+                          <tr>
+                            <th>Actor Action</th>
+                            <th>System Response</th>
+                          </tr>
+                          <tr>
+                            <td>1. This use case starts when the evaluator clicks on the "Add an assessment" button.</td>
+                            <td>2. The system redirects to the assessment creation form.</td>
+                          </tr>
+                          <tr>
+                            <td>3.	Evaluator will fill up the form and click submit.</td>
+                            <td>4.	System will show a successful message and will add that assessment to that cohort's dashboard.</td>
+                          </tr>
+                        </table>
+                      </div>
+                      <div style="padding-top: 20px">
+                        <h6><strong>Alternative Course of Events</strong></h6>
+                        <p><i>Section 4: The system will show an error if the form is not filled properly/if some information is missing.</i> </p>
+                      </div>
+                    </div>
+
+                    <h5 class="fw-bold">4.4	Add users (students) to the cohort</h5>
+                      <p><i>
+                        Use Case: Add users (students) to the cohort <br>
+                        Actor(s): Evaluator <br>
+                        Purpose: The evaluator can add students to the exam cohort so that they can take the exam.<br>
+                        Type: Primary
+                      </i></p>
+                      <div>
+                        <h6><strong>Typical course of events:</strong></h6>
+                        <table>
+                          <tr>
+                            <th>Actor Action</th>
+                            <th>System Response</th>
+                          </tr>
+                          <tr>
+                            <td>1. This use case starts when the evaluator clicks the "add student" button.</td>
+                            <td>2.	System redirects to the add student page.</td>
+                          </tr>
+                          <tr>
+                            <td>3.	The evaluator will enter the student's email address and then click submit button.</td>
+                            <td>4.	System will add the student to that cohort.</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>5.	The system will add the exam-cohort to the dashboard of the student as well.</td>
+                          </tr>
+                        </table>
+                      </div>
+                      <div style="padding-top: 20px">
+                        <h6><strong>Alternative Course of Events</strong></h6>
+                        <p><i>Section 4: There can be an error because the entered email might be invalid.</i> </p>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h5 class="fw-bold">4.5	Edit assessments</h5>
+                      <p><i>
+                        Use Case: Edit assessments<br>
+                        Actor(s): Evaluator <br>
+                        Purpose: The evaluator can edit a created assessment.<br>
+                        Type: Primary
+                      </i></p>
+                      <div>
+                        <h6><strong>Typical course of events:</strong></h6>
+                        <table>
+                          <tr>
+                            <th>Actor Action</th>
+                            <th>System Response</th>
+                          </tr>
+                          <tr>
+                            <td>1.	The use case starts when the user clicks “Edit an assessment”.</td>
+                            <td>2. The system provides the assessment page, which is editable</td>
+                          </tr>
+                          <tr>
+                            <td>3.	User does necessary changes to the assessment and saves it.</td>
+                            <td>4.	System will correct those mistakes and show the corrected assessment.</td>
+                          </tr>
+                        </table>
+                        <div style="padding-top: 20px">
+                          <h6><strong>Alternative Course of Events</strong></h6>   
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h5 class="fw-bold" style="margin-top: 16px;">4.6	Add MCQs to the assessment</h5>
+                      <p><i>
+                        Use Case: Add MCQs to the assessment<br>
+                        Actor(s): Evaluator <br>
+                        Purpose: The evaluator of an exam cohort can add MCQ questions within that cohort and specify the correct answer.<br>
+                        Type: Primary
+                      </i></p>
+                      <div>
+                        <h6><strong>Typical course of events:</strong></h6>
+                        <table>
+                          <tr>
+                            <th>Actor Action</th>
+                            <th>System Response</th>
+                          </tr>
+                          <tr>
+                            <td>1. This use case starts when the evaluator clicks "Add MCQs"</td>
+                            <td>2. The system will provide a text box to write the questions and assign the mark.</td>
+                          </tr>
+                          <tr>
+                            <td>3.	Evaluator will write the question and specify the marks as well as the correct answer for that question and click save.</td>
+                            <td>4.	System will save that question and add it to the assessment.</td>
+                          </tr>
+                        </table>
+                      </div>
+                      <div style="padding-top: 20px">
+                        <h6><strong>Alternative Course of Events</strong></h6>
+                        <p style="margin-bottom: 0px;"><i>Section 3: If the specified mark for an MCQ is more than the total mark of the assessment, then an error will be shown.</i></p>
+                        <p><i>Section 4: If the evaluator clicks the save button without specifying the correct answer and mark, then it will show an error.</i></p>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h5 class="fw-bold" style="margin-top: 16px;">4.7	Add micro-viva to the assessment</h5>
+                      <p><i>
+                        Use Case: Add micro-viva to the assessment<br>
+                        Actor(s): Evaluator <br>
+                        Purpose: The evaluator of an exam cohort can add micro-viva questions within that cohort and specify the possible correct answers.<br>
+                        Type: Primary
+                      </i></p>
+                      <div>
+                        <h6><strong>Typical course of events:</strong></h6>
+                        <table>
+                          <tr>
+                            <th>Actor Action</th>
+                            <th>System Response</th>
+                          </tr>
+                          <tr>
+                            <td>1. This use case starts when the evaluator clicks "Add micro-viva"</td>
+                            <td>2. The system will provide an option to record an audio question using the microphone.</td>
+                          </tr>
+                          <tr>
+                            <td>3.	Evaluator will record the question and specify the marks as well as the possible correct answers for that question and click save.</td>
+                            <td>4.	System will save that question and add it to the assessment.</td>
+                          </tr>
+                        </table>
+                      </div>
+                      <div style="padding-top: 20px">
+                        <h6><strong>Alternative Course of Events</strong></h6>
+                        <p style="margin-bottom: 0px;"><i>Section 3: If the specified mark for a micro-viva is more than the total mark of the assessment, then an error will be shown.</i></p>
+                        <p style="margin-bottom: 0px;"><i>Section 3: The system will not be able to record the questions if the voice is not clear or the if the microphone doesn't work properly.</i></p>
+                        <p><i>Section 4: If the evaluator clicks the save button without specifying the correct answer and mark, then it will show an error.</i></p>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h5 class="fw-bold" style="margin-top: 16px;">4.8	Download a marksheet</h5>
+                      <p><i>
+                        Use Case: 4.8	Download a marksheet<br>
+                        Actor(s): Evaluator <br>
+                        Purpose: The evaluator of an exam cohort can download the marksheet of the students after the exam. The marksheet will have the breakdowns for all marks.<br>
+                        Type: Primary
+                      </i></p>
+                      <div>
+                        <h6><strong>Typical course of events:</strong></h6>
+                        <table>
+                          <tr>
+                            <th>Actor Action</th>
+                            <th>System Response</th>
+                          </tr>
+                          <tr>
+                            <td>1. This use case starts when the evaluator clicks "Download Marksheet"</td>
+                            <td>2. The system will download that file</td>
+                          </tr>
+                        </table>
+                      </div>
+                      <div style="padding-top: 20px">
+                        <h6><strong>Alternative Course of Events</strong></h6>
+                        <p style="margin-bottom: 0px;"><i>Section 2: The system might download the wrong marksheet because it might not been renamed in a systematic pattern.</i></p>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h5 class="fw-bold" style="margin-top: 16px;">4.9	Take the exam</h5>
+                      <p><i>
+                        Use Case: Take the exam<br>
+                        Actor(s): Students <br>
+                        Purpose: The students of an exam cohort can take the exam by answering the questions assigned in the assessment. It can be done through web and mobile application.<br>
+                        Type: Primary
+                      </i></p>
+                      <div>
+                        <h6><strong>Typical course of events:</strong></h6>
+                        <table>
+                          <tr>
+                            <th>Actor Action</th>
+                            <th>System Response</th>
+                          </tr>
+                          <tr>
+                            <td>1. This use case starts when the student clicks "Start the exam"</td>
+                            <td>2. The system will redirect the student to the exam window.</td>
+                          </tr>
+                          <tr>
+                            <td>3.	The student will answer the mcqs by ticking the correct option, and for micro-viva, he/she will answer using his/her voice.</td>
+                            <td>5. System will save the answer and return the marks.</td>
+                          </tr>
+                          <tr>
+                            <td>4.	The student will click the submit button after the exam finishes.</td>
+                            <td>6. System will also send these answers to the evaluator so that he/she can edit the marks if needed.</td>
+                          </tr>
+                        </table>
+                      </div>
+                      <div style="padding-top: 20px">
+                        <h6><strong>Alternative Course of Events</strong></h6>
+                        <p style="margin-bottom: 0px;"><i>Section 5: If internet fails during the exam, the marks might be zero.</i></p>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h5 class="fw-bold" style="margin-top: 16px;">4.10	Log out</h5>
+                      <p><i>
+                        Use Case: Log out<br>
+                        Actor(s): Users <br>
+                        Purpose: The users can log out of his/her account using the logout button.<br>
+                        Type: Primary
+                      </i></p>
+                      <div>
+                        <h6><strong>Typical course of events:</strong></h6>
+                        <table>
+                          <tr>
+                            <th>Actor Action</th>
+                            <th>System Response</th>
+                          </tr>
+                          <tr>
+                            <td>1. This use case starts when the user clicks the Logout button.</td>
+                            <td>2. The system will redirect the user to the login page.</td>
+                          </tr>
+                        </table>
+                      </div>
+                      <div style="padding-top: 20px">
+                        <h6><strong>Alternative Course of Events</strong></h6>   
+                      </div>
+                    </div>
+                  </div>
+                  <br> <br>
+
+
+                  <div id="Nonfunctional-requirements">
+                    <div class="sec1.1">
+                      <h4 class="fw-bold">5. Other Nonfunctional Requirements</h4> <br>
+                      <h5 class="fw-bold">5.1	Performance Requirements</h5>
+                      <i>
+                        <ul>
+                          <li>	Both android app and web app is using the same backend which ensures good performance and synchronization.</li>
+                          <li>	The system is well optimized to tackle large volume of traffic at once.</li>
+                          <li>	System is available 24 by 7.</li>
+                        </ul>
+                      </i>
+                    </div>
+                    <div class="sec1.2">
+                      <h5 class="fw-bold">5.2	Safety Requirements</h5>
+                      <i>
+                        <ul>
+                          <li> Errors will be minimized and an appropriate error message that guides the user from an error will be provided.</li>
+                          <li>Validation of users input is highly essential.</li>
+                        </ul>
+                      </i>
+                    </div>
+                    <div class="sec1.3">
+                      <h5 class="fw-bold"> 5.3	Security Requirements</h5>
+                      <i>
+                        <ul>
+                          <li>The system is provided a high level of security and integrity of the data by the system.</li>
+                          <li>Only authorized personnel such as admin can gain access to the private data and only the user with a valid google account is allowed to create an account and view its user page.</li>
+                        </ul>
+                      </i>
+                    </div>
+                    <div class="sec1.4">
+                      <h5 class="fw-bold">5.4	Software Quality Attributes</h5>
+                      <i>
+                        <ul>
+                          <li>The key software quality attributes are Availability, Reliability and Usability.</li>
+                          <li>As the system is expected to be working 24/7. High availability is important.</li>
+                          <li>A simple but quality user interface is developed to make it easy to understand.</li>
+                          <li>The error message displayed is more descriptive and can be easily understood.</li>
+                        </ul>
+                      </i>
+                    </div>
+                    <div class="sec1.5">
+                      <h5 class="fw-bold">5.5	Business Rules</h5>
+                      <i>
+                        <ul>
+                          <li>System shall be available for everyone.</li>
+                          <li>All the users shall access the system using a valid google account.</li>
+                        </ul>
+                      </i>
+                    </div>
+                  </div>
+                  <br> <br>
+
+                  <div id="Other-requirements">
+                    <div>
+                      <h4 class="fw-bold">6.	Other Requirements</h4> <br> <br>
+                    </div>
+                  </div>
+                  <div style="break-after: page"></div>
+                  <div id="Appendix">
+                    <div>
+                      <h4 class="fw-bold">Appendix A: Glossary</h4> <br>
+                      <div style="margin-left: 20px;">
+                        <p style="margin-bottom: 0px;"><i>
+                          <strong>API: </strong>It stands for Application Protocol Interface. An API is basically a software intermediate that allows two applications to interact with each other.
+                        </i></p>
+                        <p style="margin-bottom: 0px;"><i>
+                          <strong>Framework: </strong>A software framework is an abstraction in which software, providing generic functionality, can be selectively changed by additional user-written code, thus providing application-specific software.
+                        </i></p>
+                        <p style="margin-bottom: 0px;"><i>
+                          <strong>Library: </strong>A library is a collection of non-volatile resources used by computer programs, often for software development.
+                        </i></p>
+                        <p style="margin-bottom: 0px;"><i>
+                          <strong>Android: </strong>Android is a mobile operating system based on a modififed version of the linux kernel and other open source software, designed primarily for touchscreen mobile devices.
+                        </i></p>
+                        <p style="margin-bottom: 0px;"><i>
+                          <strong>Database: </strong>A database is an organized collection of structured information, or data, typically stored electronically in a computer system.
+                        </i></p>
+                      </div>
+                    </div>
+                    <br><br>
+                    <div id="Appendix">
+                      <h5 class="fw-bold">Appendix B: Analysis Models</h5>
+                      <p style="margin-bottom: 0px;"><i>Not Available</i></p>
+                    </div>
+                    <br><br>
+                    <div id="Appendix">
+                      <h5 class="fw-bold">Appendix C: To Be Determined List</h5>
+                      <p><i>Not Available</i></p>
+                    </div>
+                  </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>

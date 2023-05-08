@@ -1,0 +1,73 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Assessment</title>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" >
+    
+    <link rel="stylesheet" href="{% static 'create_assessment.css' %}">
+    
+   
+</head>
+<body>
+  <header>
+    <div class="top-content bg-dark">
+      {% if user.is_authenticated %}
+      <div class="container d-flex justify-content-between p-2">
+        <a class="navbar-brand" href="#">
+          <img src="{% static 'images/transparent_logo.png' %}" width="105px" height="50px" alt="" class="d-inline-block align-text-top">
+        </a>
+        <div class="d-grid gap-2 d-md-flex">
+          <div class="topbar d-md-flex">
+            <a class="text-light" href="{% url 'inside_cohort_evaluator' cohort_obj.slug %}"><p>Go Back</p></a>&emsp;&emsp;
+            <a class="text-light" href="{% url 'account_logout' %}"><p>Logout</p></a>
+          </div>  
+        </div>
+      {% endif %}
+    </div>
+  </header>
+    {% block body %}
+
+    <section class="formpage">
+      <h2 style="text-align: center; color: white;">Create an assessment</h2>
+
+<form action="{% url 'create_assessment' cohort_obj.slug %}" method="POST">
+  {% csrf_token %}
+  
+    <div class="form-group field">
+      <label for="examcohort">Enter Assessment Name (Maximum 50 characters)</label>
+      <input type="text" class="form-control" maxlength="50" id="assessment_name" placeholder="Assessment Name" name="assissment" required>
+    </div>
+    
+    <div class="form-group field">
+      <label for="examcohort">Enter Available Date</label>
+      <input type="date" class="form-control" id="datePickerId" placeholder="Available Date" name="availabledate" required>
+    </div>
+    
+    <div class="form-group field">
+      <label for="examcohort">Enter Available Time</label>
+      <input type="time" class="form-control" id="availabletime" placeholder="Available Time" name="availabletime" required>
+    </div>
+    <div class="create-btn text-center">
+      <button type="submit" class="btn btn-primary">Create Now</button>
+    </div>
+    
+    
+  </form>
+  </section>
+  
+  {% endblock %}
+  {% endblock content %}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</body>
+<script>
+  datePickerId.min = new Date().toISOString().split("T")[0];
+</script>
+
+</html>

@@ -1,0 +1,71 @@
+*{
+  font-family: 'Times New Roman', Times, serif;
+}
+.col-2 {
+    padding-left: 0px;
+}
+
+.scroll-bar{
+    position: fixed;
+    padding-top: 0px;
+    min-height: 100%;
+    justify-content: flex-start;
+    background-color: black;
+}
+.nav-pills a{
+  color: white;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 15px;
+}
+.nav-pills a:hover{
+  background-color: white;
+  color: black;
+  transition: .3s;
+}
+.page-1 h1, h2, h3, h4, h5, h6{
+  
+}
+.page-1 hr{
+    margin-top: 50px;
+    height: 5px;
+}
+@media print{
+    .scroll-bar{
+        display: none;
+    }
+}
+hr{
+    background-color: black;
+    border: none;
+}
+.dots {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .dots:after {
+    content: "..............................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................";
+  }
+  .part {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .page-2{
+    font-family: 'Times New Roman', Times, serif;
+  }
+  .hlcd{
+    padding-left: 80px;
+    padding-top: 20px;
+    width: 90%;
+  }
+  .dcd{
+    padding-left: 40px;
+    padding-top: 20px;
+  }
+  @media only screen and (max-width: 1460px)
+{
+  .scroll-bar{
+    display: none;
+  }
+}

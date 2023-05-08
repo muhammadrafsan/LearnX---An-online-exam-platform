@@ -1,0 +1,114 @@
+*{
+    margin: 0;
+    padding: 0;
+  }
+  .navbar{
+    display: flex;
+    background: lightgray;
+  }
+  .navbar a{
+    font-size: 27px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+  }
+  .navbar a img{
+    margin-right: 10px;
+    opacity: 8;
+  }
+  .btn-add{
+    font-size: 25px;
+    font-weight: 700;
+    color: #fff;
+    background-color: grey;
+    border-radius: 40%;
+    padding-top: 2px;
+  }
+  .btn-add:hover {
+    background-color: black;
+    color: white;
+    transition: .8s;
+  }
+  .btn-account{
+    font-size: 25px;
+    font-weight: 700;
+    color: #fff;
+    background-color: grey;
+    border-radius: 40%;
+    padding-top: 2px;
+  }
+  .btn-account:hover {
+    color: white;
+    background-color: black;
+    transition: .8s;
+  }
+
+  .text-light{
+    text-decoration: none;
+  }
+  .topbar a h1{
+    margin-top: -3px;
+    margin-bottom: 0px;
+    margin-right: 10px;
+    color: gray;
+  }
+  .topbar a h1:hover{
+    color: lightgray;
+    transition: .3s;
+  }
+  .topbar {
+    align-items: center;
+  }
+  .topbar a p{
+    color: gray;
+    font-size: 18px;
+    font-weight: 450;
+    margin-bottom: 0px;
+  }
+  .top-content {
+    background: #ddd8d8;
+  }
+  .topbar a p:hover{
+    color: black;
+    transition: .3s;
+  }
+  .card{
+    color: white;
+    border: 5px solid lightgray;
+  }
+  .card h6{
+    color: lightgray;
+    
+  }
+  .card:hover{
+    border: 5px solid blue;
+    transition: .3s;
+}
+  .btn-primary{
+    font-weight: 500;
+    width: 90px;
+    margin-right: 5px;
+  }
+  .btn-primary:hover{
+    font-weight: 500;
+    color: black;
+    background: white;
+    transition: .4s;
+  }
+
+  .btn-danger{
+    font-weight: 500;
+    width: 90px;
+    margin-left: 5px;
+  }
+  .btn-danger:hover{
+    font-weight: 500;
+    color: black;
+    background: white;
+    transition: .4s;
+  }
+
+  .buttons{
+    display: flex;
+    justify-content: center;
+  }

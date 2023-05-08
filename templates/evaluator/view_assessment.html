@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Assessment</title>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" >
+    
+    <link rel="stylesheet" href="{% static 'view_assessment.css' %}">
+</head>
+<body>
+    <header>
+        <div class="top-content">
+          {% if user.is_authenticated %}
+          <div class="container d-flex justify-content-between p-2">
+            <a class="navbar-brand" href="#">
+              <img src="{% static 'images/transparent_logo.png' %}" width="105px" height="50px" alt="" class="d-inline-block align-text-top">
+            </a>
+            <div class="d-grid gap-2 d-md-flex">
+              <div class="topbar d-md-flex">
+                <a class="text-light" href="{% url 'inside_cohort_evaluator' cohSlug.slug  %}"><p>Go Back</p></a>&emsp;&emsp;
+                <a class="text-light" href="{% url 'home' %}"><p>Home</p></a>&emsp;&emsp;
+                <a class="text-light" href="{% url 'account_logout' %}"><p>Logout</p></a>
+              </div>  
+            </div>
+          {% endif %}
+        </div>
+    </header>
+    <section>
+        <div class="container">
+            
+            <div class="row p-5 text-center">
+                <h2 style="text-align: center; margin-bottom: 20px;">Assessments</h2>
+                {% for i in assessment %}
+                
+                <div class="col-4">
+                    <div class="card bg-dark p-4" style="width: 80%; margin: auto; margin-bottom: 30px;">  
+                      <div class="card-body">
+                          <div style="padding-bottom: 20px;">
+                            <h5 class="card-title">{{i.assesment_title}}</h5>
+                            <h6 class="card-subtitle mb-2">Evaluator: {{cohSlug.user}}</h6>
+                          </div>
+                          <div class="buttons">
+                            <a href="{% url 'InsideAssesment' i.slug %}" class="btn btn-primary" style="margin-right: 5px;">Go To</a>
+                          <form action ="{% url 'delete_assessment' i.id %}" method="POST">
+                            {% csrf_token %}
+                          <input type="submit" value="Remove" class="btn btn-danger"></a>
+                          </form>
+                          </div>
+
+                          
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                
+
+            
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,79 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.top-content{
+    background: currentColor !important;
+}
+  .navbar{
+    display: flex;
+  }
+  .navbar a{
+    font-size: 27px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+  }
+  .navbar a img{
+    margin-right: 10px;
+    opacity: 8;
+  }
+  .btn-add{
+    font-size: 25px;
+    font-weight: 700;
+    color: #fff;
+    background-color: grey;
+    border-radius: 40%;
+    padding-top: 2px;
+  }
+  .btn-add:hover {
+    background-color: black;
+    color: white;
+    transition: .8s;
+  }
+  .btn-account{
+    font-size: 25px;
+    font-weight: 700;
+    color: #fff;
+    background-color: grey;
+    border-radius: 40%;
+    padding-top: 2px;
+  }
+  .btn-account:hover {
+    color: white;
+    background-color: black;
+    transition: .8s;
+  }
+  .text-light{
+    text-decoration: none;
+  }
+  .topbar {
+    align-items: center;
+  }
+  .topbar a p{
+    color: gray;
+    font-size: 18px;
+    font-weight: 450;
+    margin-bottom: 0px;
+  }
+  .top-content {
+    background: #ddd8d8;
+  }
+  .topbar a p:hover{
+    color: lightgray;
+  }
+  .submission_list{
+    width: 100%;
+  }
+  .submission_list a{
+    font-weight: 600;
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 20%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }

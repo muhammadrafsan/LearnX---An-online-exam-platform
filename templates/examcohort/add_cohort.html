@@ -1,0 +1,77 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Cohorts</title>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" >
+    
+    <link rel="stylesheet" href="{% static 'add_cohort.css' %}">
+</head>
+<body>
+    <header>
+      {% block body %}
+          <div class="top-content">
+            {% if user.is_authenticated %}
+            <div class="container d-flex justify-content-between p-2">
+              <a class="navbar-brand" href="#">
+                <img src="{% static 'images/transparent_logo.png' %}" width="105px" height="50px" alt="" class="d-inline-block align-text-top">
+              </a>
+              <div class="d-grid gap-2 d-md-flex">
+                <div class="topbar">
+                  <a class="text-light" href="{% url 'cohort' %}"><h1>+</h1></a>
+                </div>
+                <div class="topbar d-md-flex">
+                  <a class="text-light" href="{% url 'home' %}"><p>Home</p></a>&emsp;
+                </div>  
+                <div class="topbar d-md-flex">
+                  <a class="text-light" href="{% url 'account_logout' %}"><p>Logout</p></a>
+                </div>  
+              </div>
+            {% endif %}
+          </div>
+        </header>
+
+    <div class="container bodypart">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title" style="text-align: center; padding-bottom: 10px;">Exam Cohorts</h3>
+        </div>
+
+          
+            {% for i in cohort %}
+
+            <a href="{% url 'inside_cohort_evaluator' i.slug %}"><div class="card text-center">
+                <div class="card-header d-flex justify-content-between" >
+                  <p>{{ i.cohortName }}</p>
+                  
+                  <form action ="{% url 'delete_cohort' i.id %}" method="POST">
+                    {% csrf_token %}
+                     <div class="delete-btn">
+                      <input type="submit" name="delete" value="Delete" class="btn btn-danger"></input>
+                     </div>
+                   </form> 
+                </div>
+                <div class="card-body" style="text-align: left;">
+                  
+                  <p class="card-evaluator">Evaluator: {{i.user}}</p>
+                </div>
+            </div></a>
+              
+              <br>
+            {% endfor %}
+
+        </div>
+      </div>
+      {% endblock %}
+      {% endblock content %}
+      
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

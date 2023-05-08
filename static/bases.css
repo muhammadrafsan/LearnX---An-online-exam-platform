@@ -1,0 +1,19 @@
+.topbar {
+    text-decoration: none;
+    align-items: center;
+    margin-left: 10px;
+}
+.topbar:hover {
+    font-weight: 600;
+    transition: .2s;
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
+}
+.navibar{
+    align-items: center;
+}
+.bg-dark {
+    background-color: #212529 !important;
+}

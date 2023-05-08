@@ -1,0 +1,6 @@
+Next few tasks to do:
+
+	1. Email validation (student).
+	2. Show assigned cohorts in participate exam.
+	3. Show all assessments within that cohort.
+	4. Then, start the exam.

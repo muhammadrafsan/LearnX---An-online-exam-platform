@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <link rel="stylesheet" href="{% static 'view_students.css' %}">
+</head>
+<body>
+    <header>
+        <div class="top-content bg-dark">
+          {% if user.is_authenticated %}
+          <div class="container d-flex justify-content-between p-2">
+            <a class="navbar-brand" href="#">
+              <img src="{% static 'images/transparent_logo.png' %}" width="105px" height="50px" alt="" class="d-inline-block align-text-top">
+            </a>
+            <div class="d-grid gap-2 d-md-flex" style="color: lightgray;">
+              <div class="topbar d-md-flex">
+                <a class="text-light" href="{% url 'inside_cohort_evaluator' cohortSlug.slug %}"><p>Go Back</p></a>&emsp;&emsp;
+                <a class="text-light" href="{% url 'home' %}"><p>Home</p></a>&emsp;&emsp;
+                <a class="text-light" href="{% url 'account_logout' %}"><p>Logout</p></a>
+              </div> 
+            </div>
+          {% endif %}
+        </div>
+      </header>
+
+      <section class="banner">
+        <h2 class="text-center">Enrolled Students</h2>
+        
+        <table class="table table-dark table-hover list">
+            <thead>
+              <tr>
+                <th scope="col" width="35%">Cohort Name</th>
+                <th scope="col" width="35%">Email</th>
+                <th scope="col" width="30%">Remove</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in student %}
+              
+              <tr>
+                <td>{{i.cohortName}} </td>
+                <td>{{ i.email }}</td>
+
+              <form action ="{% url 'delete_student' i.id %}" method="POST">
+                  {% csrf_token %}
+
+                <td><input type="submit" name="delete" class="btn" value="Remove"></a></td>
+              </form>
+              </tr>
+              {% endfor %}
+              
+            </tbody>
+          </table>
+
+
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

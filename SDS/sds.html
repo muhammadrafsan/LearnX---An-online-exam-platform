@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Design Specification</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/sds.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2">
+                <nav id="navbar-example3" class="navbar navbar-light flex-column align-items-stretch scroll-bar">
+                    <p class="navbar-brand" style="text-align: center; padding-top: 40px; color: #03A9F4;">
+                        <strong>Online Examination <br> System</strong>
+                    </p>
+                    <hr style="border: 2px solid lightgray; width: 100%">
+                    <nav class="nav nav-pills flex-column" style="padding-top: 20px; font-weight: bold;">
+                        <a class="nav-link" href="#home">Home</a>
+                        <a class="nav-link" href="#content-table">Table of Contents</a>
+                        <a class="nav-link" href="#introduction">Introduction</a>
+                        <a class="nav-link" href="#Document-Conventions">Document Conventions</a>
+                        <a class="nav-link" href="#Design-Component">Description of Design Components</a>
+                        <a class="nav-link" href="#HLC-Design">High-Level Component Design</a>
+                        <a class="nav-link" href="#Class-Diagram">Class diagrams</a>
+                        <a class="nav-link" href="#database-design">Database Design</a>
+                        <a class="nav-link" href="#implementation-plan">Implementation Plan</a>
+                    </nav>
+                </nav>
+            </div>
+            <div class="col-10">
+
+                    <div id="home" class="page-1 text-end">
+                        <hr>
+                        <div class="row mt-4">
+                            <div class="col-7 offset-5">
+                                <h1 class="text-end fw-bold">Software Design<br>Specification</h1>
+                                <br><br>
+                                <h2 class="fw-bold">for</h2>
+                                <br><br>
+                                <h1 class="fw-bold">Online Examination System</h1>
+                                <br><br>
+                                <h5 class="fw-bold">Version 1.0</h5>
+                                <br><br>
+                                <h5 class="fw-bold">Prepared by: Muhammad Rafsan Kabir 2011180042</h5>
+                                <h5 class="fw-bold">Rashidul Hassan Borshon 1931801642</h5>
+                                <br><br>
+                                <h5 class="fw-bold">North South University</h5>
+                                <br><br>
+                                <h5 class="fw-bold">01/07/2022</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <br> <br>
+                    <div style="break-after: page"></div>
+
+                    <div id="content-table" class="page-2">
+                        <h4><strong>Table of Contents</strong> </h4>
+                        <div class="part">
+                          <p class="dots fw-bold" style="font-size: 15px;">Table of Contents</p>
+                          <p class="fw-bold">2</p>
+                        </div>
+                        <div>
+                          <div class="part">
+                            <p class="dots fw-bold" style="font-size: 15px;">1. Introduction</p>
+                            <p class="fw-bold">3</p>
+                          </div>       
+                        </div>
+
+                        <div>
+                          <div class="part">
+                            <p class="dots fw-bold" style="font-size: 15px;">2. Document Conventions</p>
+                            <p class="fw-bold">3</p>
+                          </div>       
+                        </div>
+
+                        <div>
+                            <div class="part">
+                              <p class="dots fw-bold" style="font-size: 15px;">3. Description of Design Components </p>
+                              <p class="fw-bold">3</p>
+                            </div>       
+                        </div>
+
+                        <div>
+                            <div class="part">
+                              <p class="dots fw-bold" style="font-size: 15px;">4. High-Level Component Design </p>
+                              <p class="fw-bold">3</p>
+                            </div>       
+                        </div>
+
+                        <div>
+                          <div class="part">
+                            <p class="dots fw-bold" style="font-size: 15px;">5. Class Diagrams</p>
+                            <p class="fw-bold">4</p>
+                          </div>
+                          <div class="part">
+                            <p class="dots" style="margin-left: 20px;">5.1 Detailed Class Diagram(s)</p>
+                            <p>4</p>
+                          </div>
+                          <div class="part">
+                            <p class="dots" style="margin-left: 20px;">5.2 Detailed Class Description(s) </p>
+                            <p>4</p>
+                          </div>      
+                        </div>
+    
+                        <div>
+                          <div class="part">
+                            <p class="dots fw-bold" style="font-size: 15px;">6. Database Design </p>
+                            <p class="fw-bold">5</p>
+                          </div>
+                          <div class="part">
+                            <p class="dots" style="margin-left: 20px;">6.1 ER Diagram</p>
+                            <p>5</p>
+                          </div>                
+                        </div>
+    
+                        <div>
+                          <div class="part">
+                            <p class="dots fw-bold" style="font-size: 15px;">7. Implementation plan</p>
+                            <p class="fw-bold">11</p>
+                          </div>         
+                        </div>
+                      <br> 
+                      <div style="break-after: page"></div>
+
+                      <div id="introduction">
+                        <div class="sec1">
+                          <h4 class="fw-bold">1. Introduction</h4> 
+                          <p><i>The primary purpose of the Software Design Specification (SDS) document is to provide information about the design and implementations of our project "Online Examination System". This SDS document will provide a detailed description of the design components, high level class diagrams along with the description of each classes that are used in our system, database design and finally, the plan of our implementation. </i></p>
+                        </div>
+                      </div>
+                      <br> 
+
+                      <div id="Document-Conventions">
+                        <div class="sec1">
+                          <h4 class="fw-bold">2. Document Conventions</h4> 
+                          <p><i>The font used in this document is Arial having size 16. The text is made bolt for the highlighting purpose so that it can be easily differentiated. In this document, every functionality is equally important and every requirement has its own priority.</i></p>
+                        </div>
+                      </div>
+                      <br>
+
+                      <div id="Design-Component">
+                        <div class="sec1">
+                          <h4 class="fw-bold">3. Description of Design Components </h4> 
+                          <p><i>
+                            This project will have a Web Application as well as a Mobile Application (Android). <br>
+                            From the web application, users can get access to the following features: 
+                            <ul style="padding-left: 60px;">
+                              <li>Login to the System using Google account</li>
+                              <li>Create an exam cohort</li>
+                              <li>Add students to the cohort</li>
+                              <li>Create an assessment within that cohort</li>
+                              <li>Inside each assessment, the evaluator can assign questions (MCQ or Micro-viva)</li>
+                              <li>The evaluator can specify the time, mark and the correct answer for those questions</li>
+                              <li>The students can participate in the assessments</li>
+                              <li>After the exam, the evaluator can see the mark and edit them if required</li>
+                              <li>The marksheet can be downloaded</li>
+                              <li>The users can log out of the system</li>
+                            </ul>
+                            <p>From the mobile application (Android), users can get access to the following features:</p> 
+                            <ul style="padding-left: 60px;">
+                              <li>Login to the System using Google account</li>
+                              <li>The students can participate in the assessments</li>
+                              <li>The users can log out of the system</li>
+                            </ul>
+                          </i></p>
+                        </div>
+                      </div>
+                      <br>
+                      <div style="break-after: page"></div>
+
+                      <div id="HLC-Design">
+                        <div class="sec1">
+                          <h4 class="fw-bold">4. High-Level Component Design</h4> 
+                          <p><i>
+                            The High-Level Component Design is attached below: <br>
+                            <img src="images/High Level Comp Diagram.png" alt="High-Level Component Design" class="img-fluid hlcd">
+                          </i></p>
+                        </div>
+                      </div>
+                      <br>
+
+                      <div id="Class-Diagram">
+                        <div class="">
+                          <h4 class="fw-bold">5. Class Diagrams</h4> <br>
+                          <h5 class="fw-bold"> 5.1 Detailed Class Diagram(s)</h5>
+                          <p><i>
+                            The detailed class diagram is attached below: <br>
+                            <img src="images/Detailed class diagram.png" alt="Detailed Class Diagram" class="img-fluid dcd">
+                          </i></p>
+                        </div> <br>
+                        <div style="break-after: page"></div>
+                        <div class="sec1.2">
+                          <h5 class="fw-bold"> 5.2 Detailed Class Description(s)</h5>
+                          <div>
+                            <div><p><strong>Class Name: </strong>Examcohort</p></div>
+                            <div><p><strong>Purpose: </strong>This class is used to manage the exam cohorts (add/delete/edit) in our system.</p></div>
+                            <div>
+                              <p><strong>Public Attributes:</strong></p>
+                              <div style="padding-left: 20px;">
+                                <ol type="i">
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>cohortName <br> <i>Type: </i>string <br> <i>Purpose: </i>This attribute is used to store the names of the exam cohorts.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>section <br> <i>Type: </i>int <br> <i>Purpose: </i>This attribute is used to store the section number of the exam cohorts.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>students <br> <i>Type: </i>list <br> <i>Purpose: </i>This attribute is used to store the names of the students of the exam cohorts.</li>
+                                  <li><i>Name: </i>evaluator <br> <i>Type: </i>string <br> <i>Purpose: </i>This attribute is used to store the name of the creator/evaluator of the exam cohorts.</li>
+                                </ol>
+                              </div> 
+                              <p><strong>Public Methods:</strong></p>
+                              <div style="padding-left: 20px;">
+                                <ol type="i">
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>addCohort <br> <i>Parameters: </i>string cohortName, int cohortSection<br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to add/create an exam cohort.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>deleteCohort <br> <i>Parameters: </i>string cohortName, int cohortSection<br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to delete/remove an exam cohort.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>addStudents <br> <i>Parameters: </i>string email<br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to add a student to a cohort.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>deleteStudents <br> <i>Parameters: </i>string email<br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to remove a student from a cohort.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>viewStudents <br> <i>Parameters: </i> <br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to show the list of students in a cohort.</li>
+                                  <li><i>Name: </i>viewAssessments <br> <i>Parameters: </i> <br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to show the list of assessments created in a cohort.</li>
+                                </ol>
+                              </div> 
+                            </div>
+                          </div> <br>
+
+                          <div>
+                            <div><p><strong>Class Name: </strong>Assessment</p></div>
+                            <div><p><strong>Purpose: </strong>This class is used to manage assessments (add/delete/edit) within a cohort.</p></div>
+                            <div>
+                              <p><strong>Public Attributes:</strong></p>
+                              <div style="padding-left: 20px;">
+                                <ol type="i">
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>title <br> <i>Type: </i>string <br> <i>Purpose: </i>This attribute is used to store the names of the assessment in an exam cohort.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>totalMarks <br> <i>Type: </i>int <br> <i>Purpose: </i>This attribute is used to store the total mark of an assessment.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>availableDateTime <br> <i>Type: </i>string <br> <i>Purpose: </i>This attribute is used to store the time upto which an assessment will be available to the students.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>dueDateTime <br> <i>Type: </i>string <br> <i>Purpose: </i>This attribute is used to store the due time for that assessment.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>evaluator <br> <i>Type: </i>string <br> <i>Purpose: </i>This attribute is used to store the name of the evaluator of that cohort.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>cohortName <br> <i>Type: </i>string <br> <i>Purpose: </i>This attribute is used to store the name of the cohort of that assessment.</li>
+                                  <li><i>Name: </i>section <br> <i>Type: </i>int <br> <i>Purpose: </i>This attribute is used to store the section of the cohort of that assessment.</li>
+                                </ol>
+                              </div> 
+                              <div style="break-after: page"></div>
+                              <p><strong>Public Methods:</strong></p>
+                              <div style="padding-left: 20px;">
+                                <ol type="i">
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>addAssessment <br> <i>Parameters: </i>string assessmentTitle<br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to add/create an assessment within an exam cohort.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>deleteAssessment <br> <i>Parameters: </i>string assessmentTitle<br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to delete/remove an assessment from an exam cohort.</li>
+                                  <li><i>Name: </i>editAssessment <br> <i>Parameters: </i><br> <i>Return Type: </i>void <br> <i>Description: </i>This method will allow the evaluator to edit an assessment.</li>
+                                </ol>
+                              </div> 
+                            </div>
+                          </div> <br>
+
+                          <div>
+                            <div><p><strong>Class Name: </strong>Question</p></div>
+                            <div><p><strong>Purpose: </strong>This class is used to manage questions in an assessment.</p></div>
+                            <div>
+                              <p><strong>Public Attributes:</strong></p>
+                              <div style="padding-left: 20px;">
+                                <ol type="i">
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>questionNumber <br> <i>Type: </i>int <br> <i>Purpose: </i>This attribute is used to number a question for identification.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>questionFormat <br> <i>Type: </i>string <br> <i>Purpose: </i>This attribute is used to select the type of question (MCQ or Micro-viva).</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>questionTitle <br> <i>Type: </i>string <br> <i>Purpose: </i>This attribute is used to store a question.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>mark <br> <i>Type: </i>float <br> <i>Purpose: </i>This attribute is used to store the mark of a question.</li>
+                                  <li><i>Name: </i>time <br> <i>Type: </i>string <br> <i>Purpose: </i>This attribute is used to store the specified time for a question.</li>
+                                </ol>
+                              </div> 
+                              <div style="break-after: page"></div>
+                              <p><strong>Public Methods:</strong></p>
+                              <div style="padding-left: 20px;">
+                                <ol type="i">
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>selectFormat <br> <i>Parameters: </i><br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to select the type of question.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>addQuestion <br> <i>Parameters: </i>string question<br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to add a question to an assessment.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>editQuestion <br> <i>Parameters: </i><br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to edit a question.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>deleteQuestion <br> <i>Parameters: </i><br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to remove a question from an assessment.</li>
+                                  <li><i>Name: </i>specifyAnswer <br> <i>Parameters: </i> <br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to specify the correct answer of a question.</li>
+                                </ol>
+                              </div> 
+                            </div>
+                          </div> <br>
+
+                          <div>
+                            <div><p><strong>Class Name: </strong>MCQ</p></div>
+                            <div><p><strong>Purpose: </strong>This class is used to manage the MCQs (add/delete/edit) in the assessment.</p></div>
+                            <div>
+                              <p><strong>Public Attributes:</strong></p>
+                              <div style="padding-left: 20px;">
+                                <ol type="i">
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>questionTitle <br> <i>Type: </i>char <br> <i>Purpose: </i>This attribute is used to store the title of a question.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>mark <br> <i>Type: </i>int <br> <i>Purpose: </i>This attribute is used to mark of a question.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>time <br> <i>Type: </i>date <br> <i>Purpose: </i>This attribute is used to store the time available for a question.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>specifiedAnswer <br> <i>Type: </i>char <br> <i>Purpose: </i>This attribute is used to store the answer of a question.</li>
+                                  <li><i>Name: </i>questionNumber <br> <i>Type: </i>int <br> <i>Purpose: </i>This attribute is used to store the question number.</li>
+                                </ol>
+                              </div> 
+                              <p><strong>Public Methods:</strong></p>
+                              <div style="padding-left: 20px;">
+                                <ol type="i">
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>addQuestion <br> <i>Parameters: </i>char questionTitle, int mark, date time, char specifiedAnswer, int questionNumber<br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to add MCQ to an assessment.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>deleteQuestion <br> <i>Parameters: </i>char questionTitle, int mark, date time, char specifiedAnswer, int questionNumber<br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to delete MCQ to an assessment.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>editQuestion <br> <i>Parameters: </i>char questionTitle, int mark, date time, char specifiedAnswer, int questionNumber<br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to edit MCQ to an assessment.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>specifyAnswer <br> <i>Parameters: </i>char questionTitle, int questionNumber<br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to add answer to a MCQ.</li>
+                            
+                                </ol>
+                              </div> 
+                            </div>
+                          </div> <br>
+
+                          <div>
+                            <div><p><strong>Class Name: </strong>Micro-viva</p></div>
+                            <div><p><strong>Purpose: </strong>This class is used to manage the Micro-viva question (add/delete/edit) in the assessment.</p></div>
+                            <div>
+                              <p><strong>Public Attributes:</strong></p>
+                              <div style="padding-left: 20px;">
+                                <ol type="i">
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>questionTitle <br> <i>Type: </i>char <br> <i>Purpose: </i>This attribute is used to store the title of a question.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>mark <br> <i>Type: </i>int <br> <i>Purpose: </i>This attribute is used to store the mark of a question.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>time <br> <i>Type: </i>date <br> <i>Purpose: </i>This attribute is used to store the time available for a question.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>specifiedAnswer <br> <i>Type: </i>char <br> <i>Purpose: </i>This attribute is used to store the answer of a question.</li>
+                                  <li><i>Name: </i>questionNumber <br> <i>Type: </i>int <br> <i>Purpose: </i>This attribute is used to store the question number.</li>
+                                </ol>
+                              </div> 
+                              <p><strong>Public Methods:</strong></p>
+                              <div style="padding-left: 20px;">
+                                <ol type="i">
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>addQuestion <br> <i>Parameters: </i>char questionTitle, int mark, date time, char specifiedAnswer, int questionNumber<br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to add viva to an assessment.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>deleteQuestion <br> <i>Parameters: </i>char questionTitle, int mark, date time, char specifiedAnswer, int questionNumber<br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to delete viva to an assessment.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>editQuestion <br> <i>Parameters: </i>char questionTitle, int mark, date time, char specifiedAnswer, int questionNumber<br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to edit viva to an assessment.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>specifyAnswer <br> <i>Parameters: </i>char questionTitle, int questionNumber<br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to add answer to a viva.</li>
+                            
+                                </ol>
+                              </div> 
+                            </div>
+                          </div> <br>
+                          <div style="break-after: page"></div>
+                          <div>
+                            <div><p><strong>Class Name: </strong>Student</p></div>
+                            <div><p><strong>Purpose: </strong>This class is used to manage the students (add/delete) in a cohort..</p></div>
+                            <div>
+                              <p><strong>Public Attributes:</strong></p>
+                              <div style="padding-left: 20px;">
+                                <ol type="i">
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>email <br> <i>Type: </i>string <br> <i>Purpose: </i>This attribute is used to store the emails of the students.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>name <br> <i>Type: </i>string <br> <i>Purpose: </i>This attribute is used to store the name of a student.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>cohortName <br> <i>Type: </i>string <br> <i>Purpose: </i>This attribute is used to store the name of a cohort.</li>
+                                  <li><i>Name: </i>cohortSection <br> <i>Type: </i>int <br> <i>Purpose: </i>This attribute is used to store the section number of the cohort.</li>
+                                </ol>
+                              </div> 
+                              <p><strong>Public Methods:</strong></p>
+                              <div style="padding-left: 20px;">
+                                <ol type="i">
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>getEmail <br> <i>Parameters: </i>string email<br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to retrieve the student's email.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>getName <br> <i>Parameters: </i>string name<br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to retrieve the student's name.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>takeExam <br> <i>Parameters: </i>string email, string name, string cohortName, int cohortSection<br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to allow a student to participate in an assessment.</li>
+                                </ol>
+                              </div> 
+                            </div>
+                          </div> <br>
+
+                          <div>
+                            <div><p><strong>Class Name: </strong>Evaluator</p></div>
+                            <div><p><strong>Purpose: </strong>This class is used to allow evaluators manage the exam cohorts (add/delete/edit), students (add/view), assessment (add/view) in our system.</p></div>
+                            <div>
+                              <p><strong>Public Attributes:</strong></p>
+                              <div style="padding-left: 20px;">
+                                <ol type="i">
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>email <br> <i>Type: </i>string <br> <i>Purpose: </i>This attribute is used to store the emails of the evaluators.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>Name <br> <i>Type: </i>string <br> <i>Purpose: </i>This attribute is used to store the names of the evaluators.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>cohortName <br> <i>Type: </i>string <br> <i>Purpose: </i>This attribute is used to store the name of the exam cohort.</li>
+                                  <li><i>Name: </i>cohortSection <br> <i>Type: </i>int <br> <i>Purpose: </i>This attribute is used to store the section number of the exam cohort.</li>
+                                </ol>
+                              </div> 
+                              <p><strong>Public Methods:</strong></p>
+                              <div style="padding-left: 20px;">
+                                <ol type="i">
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>addCohort <br> <i>Parameters: </i>string cohortName, int cohortSection<br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to add/create an exam cohort.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>deleteCohort <br> <i>Parameters: </i>string cohortName, int cohortSection<br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to delete/remove an exam cohort.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>addStudents <br> <i>Parameters: </i>string email<br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to add a student to a cohort.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>addAssessment <br> <i>Parameters: </i><br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to add an assessment to a cohort.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>viewStudents <br> <i>Parameters: </i> <br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to show the list of students in a cohort.</li>
+                                  <li><i>Name: </i>viewAssessments <br> <i>Parameters: </i> <br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to show the list of assessments created in a cohort.</li>
+                                </ol>
+                              </div> 
+                            </div>
+                          </div> <br>
+
+                          <div>
+                            <div><p><strong>Class Name: </strong>Spreadsheet</p></div>
+                            <div><p><strong>Purpose: </strong>This class is used to store the results of an assessment.</p></div>
+                            <div>
+                              <p><strong>Public Attributes:</strong></p>
+                              <div style="padding-left: 20px;">
+                                <ol type="i">
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>studentEmail<br> <i>Type: </i>string <br> <i>Purpose: </i>This attribute is used to store the emails of the students</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>studentName <br> <i>Type: </i>string <br> <i>Purpose: </i>This attribute is used to store the names of the students.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>mark <br> <i>Type: </i>float <br> <i>Purpose: </i>This attribute is used to store the marks of all the questions.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>cohortName <br> <i>Type: </i>string <br> <i>Purpose: </i>This attribute is used to stroe the name of the cohort.</li>
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>cohortSection <br> <i>Type: </i>int <br> <i>Purpose: </i>This attribute is used to store the section of the cohort.</li>
+                                  <li><i>Name: </i>assessmentName <br> <i>Type: </i>string <br> <i>Purpose: </i>This attribute is used to store the name of the assessment.</li>
+                                </ol>
+                              </div> 
+                              <p><strong>Public Methods:</strong></p>
+                              <div style="padding-left: 20px;">
+                                <ol type="i">
+                                  <li style="padding-bottom: 5px;"><i>Name: </i>getMark <br> <i>Parameters: </i>float mark<br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to show the marks of all students in an assessment.</li>
+                                  <li><i>Name: </i>getStudent <br> <i>Parameters: </i>string studentEmail, string studentName, string cohortName, string cohortSection <br> <i>Return Type: </i>void <br> <i>Description: </i>This method is used to get the information of all students.</li>
+                                </ol>
+                              </div> 
+                            </div>
+                          </div><br> <br>
+
+                          <div id="database-design">
+                            <div>
+                              <h4 class="fw-bold">6. Database Design</h4> <br>
+                              <h5 class="fw-bold">6.1 ER Diagram</h5>
+                              <p><i>The ER Diagram is attached below: </i></p>
+                              <img src="images/ER Diagram.png" alt="ER Diagram" class="img-fluid erd">
+                               <br>
+                               <h5 class="fw-bold" style="padding-bottom: 5px;">Purpose</h5>
+                                <ul style="font-size: 16px; list-style: none;"><i>
+                                  <li><strong>Examcohort: </strong> The Examcohort table is used to keep the records of all exam cohorts that are created in the system. </li>
+                                  <li><strong>Assessment: </strong> The Assessment table is used to store all the information about the assessments that are created within a cohort. </li>
+                                  <li><strong>Question: </strong> This table stores the information regarding each question that are posted in the assessment.</li>
+                                  <li><strong>MCQ: </strong> The MCQ table stores the information regarding each MCQ that are posted in the assessment.</li>
+                                  <li><strong>Micro-viva: </strong> The Micro-viva table stores the information regarding each viva that are posted in the assessment. </li>
+                                  <li><strong>Student: </strong> This table keeps record of all the necessary information of the students that are added in the cohort. </li>
+                                  <li><strong>Evaluator: </strong> The Evaluator table keeps record of all the necessary information of the evaluator, who created a cohort. </li>
+                                  <li><strong>Spreadsheet: </strong> This table stores the marks of all the students participated in an assessment. </li></i>
+                                </ul>
+                              
+                            </div>
+                          </div>
+                          <br> <br>
+                          <div style="break-after: page"></div>
+                          <div id="implementation-plan">
+                            <div>
+                              <h4 class="fw-bold">7. Implementation plan</h4> 
+                              <p><i>
+                                <ol>
+                                  <li> At first, we decided to gather the requirements for our project.</li>
+                                  <li>Then, we'll analyses those requirements and make an SRS.</li>
+                                  <li>We will design our project and produce an SDS.</li>
+                                  <li>After that, we will divide the tasks between the group members.</li>
+                                  <li>We set deadlines for specific tasks (Trello Board).</li>
+                                  <li>Now, we will develop the system.</li>
+                                  <li>We will then carry out unit testing on our developed project.</li>
+                                </ol>
+                              </i></p>
+                               <br>  
+                            </div>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

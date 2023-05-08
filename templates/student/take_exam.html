@@ -1,0 +1,473 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take the exam</title>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'take_exam.css' %}">
+</head>
+<body>   
+    <header>
+            <div class="top-content">
+              {% if user.is_authenticated %}
+              <div class="container d-flex justify-content-between p-2">
+                <a class="navbar-brand" href="#">
+                  <img src="{% static 'images/transparent_logo.png' %}" width="105px" height="50px" alt="" class="d-inline-block align-text-top">
+                </a>
+                <div class="d-grid gap-2 d-md-flex">
+                  <div class="topbar d-md-flex">
+                    <a class="text-light" href="{% url 'home' %}"><p>Home</p></a>&emsp;
+                  </div>  
+                  <div class="topbar d-md-flex">
+                    <a class="text-light" href="{% url 'account_logout' %}"><p>Logout</p></a>
+                  </div>  
+                </div>
+              {% endif %}
+            </div>
+            
+          </header>
+    <div class="start_btn"><button>Take Exam Now</button></div>
+    
+    <!-- Quiz Box -->
+
+    <div class="quiz_box">
+        <header>
+            <div class="title">LearnX</div>
+            <div class="timer">
+                <div class="time_left_txt">Remaining Time</div>
+                <div class="timer_sec"></div>
+            </div>
+            
+        </header>
+        
+        <section>
+            <div class="que_text">
+              {%for i in show_mcq%}
+
+              {% endfor %}
+            </div>
+            <div class="option_list">
+
+            </div>
+        </section>
+        
+        <section>
+            <div class="que_text">
+              {%for i in show_viva%}
+              <!--<label for="mcqquestion">Listen Viva Question</label>&emsp;
+              <input type="button" value="Listen" >-->
+
+              {% endfor %}
+            </div>
+        </section>
+
+        <footer>
+            <div class="total_que">
+
+            </div>
+            <iframe name="votar" style="display:none;"></iframe>
+            <form  method="POST" id="create" target="votar">
+                {% csrf_token %}
+            <input type="hidden" name="result_data" value="" id="js_data_input">
+            
+            <input type="hidden" name="selectedOpt" value="" id="js_data_input2">
+            <input type="hidden" name="ques" value="" id="js_data_input_qs">
+            <input type="hidden" name="opA" value="" id="js_data_input_opA">
+            <input type="hidden" name="opB" value="" id="js_data_input_opB">
+            <input type="hidden" name="opC" value="" id="js_data_input_opC">
+            <input type="hidden" name="opD" value="" id="js_data_input_opD">
+            <input type="hidden" name="type" value="" id="js_data_input_type">
+            
+            <input type="submit" class="next_btn" value="NEXT">
+            
+        </form>
+        </footer>
+    </div>
+
+    <div class="result_box">
+        <div class="score_text">
+            //from JS
+        </div>
+        <div class="buttons">
+            
+
+            <!--<input type="button" id="js_done_id" name="js_done" class="quit" value = "DONE">-->
+            <input type="button"  class="quit" value="DONE">
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+{{ show_mcq|json_script:"show_mcq" }}
+{{ show_viva|json_script:"show_viva" }}
+
+<script>
+
+const start_btn = document.querySelector(".start_btn button");
+const quiz_box = document.querySelector(".quiz_box");
+const result_box = document.querySelector(".result_box");
+const option_list = document.querySelector(".option_list");
+const time_line = document.querySelector("header .time_line");
+const timeText = document.querySelector(".timer .time_left_txt");
+const timeCount = document.querySelector(".timer .timer_sec");
+const quit_quiz = result_box.querySelector(".buttons .quit");
+const next_btn = document.querySelector("footer .next_btn");
+const bottom_ques_counter = document.querySelector("footer .total_que");
+
+let timeValue = 30;
+let que_count = 0;
+let que_numb = 1;
+let userScore = 0;
+let counter;
+let counterLine;
+let widthValue = 0;
+
+start_btn.onclick = ()=>{
+    quiz_box.classList.add("activeQuiz"); //show quiz box
+    showQuetions(0); //calling showQestions function
+    queCounter(1); //passing 1 parameter to queCounter
+    startTimer(30); //calling startTimer function
+}
+
+next_btn.onclick = ()=>{
+    /*if(questions[index][0].qstype!=="mcq") 
+    {
+        var uservivaans = document.getElementById("speechToText");
+        console.log("Testing");
+        optionSelected(uservivaans);
+    }*/
+
+
+    if(que_count < questions.length - 1){ //if question count is less than total question length
+        que_count++; //increment the que_count value
+        que_numb++; //increment the que_numb value
+        showQuetions(que_count); //calling showQestions function
+        queCounter(que_numb); //passing que_numb value to queCounter
+        clearInterval(counter); //clear counter
+        clearInterval(counterLine); //clear counterLine
+        startTimer(timeValue); //calling startTimer function
+        timeText.textContent = "Remaining Time"; //change the timeText to Time Left
+        //next_btn.classList.remove("show"); //hide the next button
+    }else{
+        clearInterval(counter); //clear counter
+        showResult(); //calling showResult function
+    }
+
+    
+}
+
+quit_quiz.onclick = ()=>{
+    window.location.reload(); //reload the current window
+}
+
+
+function showQuetions(index){
+
+    console.log(questions[index][0].qstype);
+    //for mcq
+    if(questions[index][0].qstype === "mcq") {
+        console.log("Inside if");
+    const que_text = document.querySelector(".que_text");
+    //creating a new span and div tag for question and option and passing the value using array index
+    let que_tag = '<span>Nummber: '+(index+1)+'&emsp;'+ questions[index][0].question +'&emsp; (Mark: '+questions[index][0].mark+')</span>';
+    var op_shuffle = [0,1,2,3];
+    shuffleArray(op_shuffle);
+    let option_tag = '<div class="option"><span>'+ questions[index][0].options[op_shuffle[0]] +'</span></div>'
+    + '<div class="option"><span>'+ questions[index][0].options[op_shuffle[1]] +'</span></div>'
+    + '<div class="option"><span>'+ questions[index][0].options[op_shuffle[2]] +'</span></div>'
+    + '<div class="option"><span>'+ questions[index][0].options[op_shuffle[3]] +'</span></div>' ;
+    que_text.innerHTML = que_tag; //adding new span tag inside que_tag
+    option_list.innerHTML = option_tag; //adding new div tag inside option_tag
+    
+    const option = option_list.querySelectorAll(".option");
+    
+    for(i=0; i < option.length; i++){
+        option[i].setAttribute("onclick", "optionSelected(this)");
+    }
+    //$('#js_data_input_qs').val(questions[index][0].question);
+    //$('#js_data_input_opA').val(questions[index][0].options[0]);
+   // $('#js_data_input_opB').val(questions[index][0].options[1]);
+    //$('#js_data_input_opC').val(questions[index][0].options[2]);
+    //$('#js_data_input_opD').val(questions[index][0].options[3]);
+    console.log(questions);
+    next_btn.classList.add("show");
+}
+//for viva
+else{
+    console.log("Inside else");
+    const que_text = document.querySelector(".que_text");
+    let que_tag = '<p style="font-size: 17px; color: red;">Answers containing more than 5 words are marked as zero.</p><span>Number: '+(index+1)+'&emsp; (Mark: '+questions[index][0].mark+')&emsp;</span>';
+    let option_tag = '<div class="option"><label>Play the question: </label><input type="button" value="Listen" onclick=listenAudio('+index+')></div>'+
+    '<div class="option"><label>Answer the question: </label><input type="button" value="Record" onclick=record()></div>'+
+    '<div class="option"><label>Your answer: </label>&emsp;<input type="text" name="vivaans" id="speechToText" placeholder="Your answer" readonly><input type="button" value="Stop Recording" onclick=mcqAnswer(this)></div>';
+    que_text.innerHTML = que_tag; //adding new span tag inside que_tag
+    option_list.innerHTML = option_tag;
+    //optionSelected(option[2]);
+    //console.log("Hello"+document.getElementById("vivaans"));
+    
+    next_btn.classList.add("show");
+    }
+    //next_btn("oclick", "optionSelected(userans)");
+    
+    
+}
+function mcqAnswer(answer){
+    clearInterval(counter); //clear counter
+    let userAns = document.getElementById("speechToText").value; //getting user selected option
+    userAns = userAns.toLowerCase();
+    
+    const arr = questions[que_count][0].answer.toLowerCase().split(',');
+    //const arr = questions[que_count][0].answer;
+    
+    console.log(arr);
+    var flag = 1;
+    let correcAns = arr; //getting correct answer from array
+   // correcAns.toLowerCase();
+    const allOptions = option_list.children.length; //getting all option items
+    const userArr = userAns.split(' ');
+    userArr.push(userAns);
+    console.log("User's ans:"+userArr);
+    console.log("Correct ans:"+arr);
+    if(userArr.length>5){
+        flag = 0;
+    }
+    else {
+    for(let i=0; i<arr.length; i++){
+    if(userAns.search(correcAns[i]) !== -1){ //if user selected option is equal to array's correct answer
+    console.log(userArr[i]);
+        if(userAns.search("not")!==-1)
+        {
+            console.log("False");
+            flag = 0;
+            break;
+        }
+        else {
+        userScore += questions[que_count][0].mark; //upgrading score value with 1
+        //answer.classList.add("selected"); //adding green color to correct selected option
+        flag = 1;
+        console.log("Correct Answer");
+        console.log("Your correct answers = " + userScore);
+        $('#js_data_input').val(questions[que_count][0].mark);
+        $('#js_data_input_qs').val(questions[que_count][0].question);
+        $('#js_data_input2').val(userAns);
+        $('#js_data_input_opA').val(null);
+        $('#js_data_input_opB').val(null);
+        $('#js_data_input_opC').val(null);
+        $('#js_data_input_opD').val(null);
+        $('#js_data_input_type').val("viva");
+    
+        break;
+        }
+    }else{
+        //answer.classList.add("selected"); //adding red color to correct selected option
+        flag = 0;
+        
+    }
+}
+    }
+if(flag===0){
+    console.log("Wrong Answer");
+        $('#js_data_input').val(0);
+        $('#js_data_input_qs').val(questions[que_count][0].question);
+        $('#js_data_input2').val(userAns);
+        $('#js_data_input_opA').val(null);
+        $('#js_data_input_opB').val(null);
+        $('#js_data_input_opC').val(null);
+        $('#js_data_input_opD').val(null);
+        $('#js_data_input_type').val("viva");
+}
+else{
+    console.log("right answer");
+}
+    next_btn.classList.add("show");
+}
+
+function optionSelected(answer){
+    //console.log(answer);
+    clearInterval(counter); //clear counter
+    let userAns = answer.textContent; //getting user selected option
+    let correcAns = questions[que_count][0].answer; //getting correct answer from array
+    const allOptions = option_list.children.length; //getting all option items
+    
+    if(userAns == correcAns){ //if user selected option is equal to array's correct answer
+        userScore += questions[que_count][0].mark; //upgrading score value with 1
+        answer.classList.add("selected"); //adding green color to correct selected option
+        console.log("Correct Answer");
+        console.log("Your correct answers = " + userScore);
+        $('#js_data_input').val(questions[que_count][0].mark);
+        $('#js_data_input_qs').val(questions[que_count][0].question);
+        $('#js_data_input_opA').val(questions[que_count][0].options[0]);
+        $('#js_data_input_opB').val(questions[que_count][0].options[1]);
+        $('#js_data_input_opC').val(questions[que_count][0].options[2]);
+        $('#js_data_input_opD').val(questions[que_count][0].options[3]);
+        $('#js_data_input_type').val(questions[que_count][0].qstype);
+    }else{
+        answer.classList.add("selected"); //adding red color to correct selected option
+        console.log("Wrong Answer");
+
+        for(i=0; i < allOptions; i++){
+            if(option_list.children[i].textContent == correcAns){ //if there is an option which is matched to an array answer 
+                option_list.children[i].setAttribute("class", "option correct"); //adding green color to matched option
+                console.log("Auto selected correct answer.");
+            }
+        }
+        $('#js_data_input').val(0);
+        $('#js_data_input_qs').val(questions[que_count][0].question);
+        $('#js_data_input_opA').val(questions[que_count][0].options[0]);
+        $('#js_data_input_opB').val(questions[que_count][0].options[1]);
+        $('#js_data_input_opC').val(questions[que_count][0].options[2]);
+        $('#js_data_input_opD').val(questions[que_count][0].options[3]);
+        $('#js_data_input_type').val(questions[que_count][0].qstype);
+    }
+    $('#js_data_input2').val(userAns);
+    for(i=0; i < allOptions; i++){
+        option_list.children[i].classList.add("disabled"); //once user select an option then disabled all options
+    }
+    next_btn.classList.add("show");
+}
+
+function startTimer(time){
+    counter = setInterval(timer, 1000);
+    function timer(){
+        timeCount.textContent = time; //changing the value of timeCount with time value
+        time--; //decrement the time value
+        if(time < 9){ //if timer is less than 9
+            let addZero = timeCount.textContent; 
+            timeCount.textContent = "0" + addZero; //add a 0 before time value
+        }
+        if(time < 0){ //if timer is less than 0
+            clearInterval(counter); //clear counter
+            const allOptions = option_list.children.length; //getting all option items
+            let correcAns = questions[que_count][0].answer; //getting correct answer from array
+            for(i=0; i < allOptions; i++){
+                if(option_list.children[i].textContent == correcAns){ //if there is an option which is matched to an array answer
+                    option_list.children[i].setAttribute("class", "option correct"); //adding green color to matched option
+                    
+                    console.log("Time Off: Auto selected correct answer.");
+                }
+            }
+            for(i=0; i < allOptions; i++){
+                option_list.children[i].classList.add("disabled"); //once user select an option then disabled all options
+            }
+            next_btn.classList.add("show"); //show the next button if user selected any option
+        }
+    }
+}
+
+function showResult(){
+    quiz_box.classList.remove("activeQuiz"); //hide quiz box
+    result_box.classList.add("activeResult"); //show result box
+    const scoreText = result_box.querySelector(".score_text");
+    var total_score = 0;
+    for(let i=0; i<questions.length; i++)
+    {
+        total_score = total_score + questions[i][0].mark;
+    }
+
+    let scoreTag = '<span>Marks Obtained: <p>'+ userScore +'</p> out of <p>'+ total_score +'</p></span>';
+        scoreText.innerHTML = scoreTag;
+        //$('#js_data_input').val(userScore);
+        //$('#js_data_input_tm').val(total_score);
+}
+
+function queCounter(index){
+    let totalQueCounTag = '<span><p>'+ index +'</p> of <p>'+ questions.length +'</p> Questions</span>';
+    bottom_ques_counter.innerHTML = totalQueCounTag;  //adding new span tag inside bottom_ques_counter
+}
+
+function shuffleArray(array) {
+  for (var i = array.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+  }
+}
+var q_type = {{q_type|safe}};
+var q_list = {{show_mcq|safe}};
+var op_list = {{options|safe}};
+var ans = {{cor_ans|safe}};
+var score = {{marks|safe}};
+
+var v_list = {{show_viva|safe}};
+var v_mark = {{vivamarks|safe}};
+var qv_type = {{qv_type|safe}};
+var v_ans = {{vivaans|safe}};
+let mcqques = queLoop();
+
+
+function queLoop(){
+  var ques_list = [];
+for (let i = 0; i < q_list.length; i++)
+{
+  console.log("value of i is" + i);
+  
+  var faa = [{
+    
+    question: q_list[i],
+    answer: ans[i],
+    mark: score[i],
+    options: [
+      op_list[i][0],
+      op_list[i][1],
+      op_list[i][2],
+      op_list[i][3]
+    ],
+    qstype: q_type[i] }
+  ];
+  ques_list.push(faa);
+}
+//shuffleArray(ques_list);
+return ques_list;
+}
+
+let vivaQues = queViva();
+
+function queViva(){
+  var viva_list = [];
+  for (let i = 0; i < v_list.length; i++)
+  {
+    
+    var paa = [{
+      question: v_list[i],
+      mark: v_mark[i],
+      answer: v_ans[i],
+      qstype: qv_type[i] }
+    ];
+    console.log("hello");
+    viva_list.push(paa);
+  }
+  //console.log(viva_list);
+  //shuffleArray(ques_list);
+  return viva_list;
+}
+let questions = mcqques.concat(vivaQues);
+shuffleArray(questions);
+var recognition = new webkitSpeechRecognition();
+        //It records an audio
+        function record() {
+            
+            recognition.lang = "en-GB";
+
+            recognition.onresult = function(event) {
+                console.log("Event: "+recognition);
+                //document.getElementById('speechToText').value = event.results[0][0].transcript;
+                document.getElementById('speechToText').value = event.results[0][0].transcript;
+            }
+            recognition.start();
+        }
+        //It plays the recorded audio
+        function listenAudio(index) {
+            //console.log(questions[index][0].question);
+            let question = questions[index][0].question;
+            var msg = new SpeechSynthesisUtterance();
+            msg.text = question;
+            window.speechSynthesis.speak(msg);
+        }
+</script>
+</html>

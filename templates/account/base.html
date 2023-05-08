@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+  <head>
+    <title>Dashboard | LearnX</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" >
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bases.css' %}">
+    <style>
+      .form-group {
+        margin-top: 10px;
+      }
+    </style>
+   
+  </head>
+  <body>
+    
+    {% block body %}
+
+    <div class="bg-dark">
+      {% if user.is_authenticated %}
+      <div class="container d-flex justify-content-between ">
+        <a class="navbar-brand" href="#">
+          <img src="{% static 'images/transparent_logo.png' %}" width="105px" height="50px" alt="" class="d-inline-block align-text-top">
+        </a>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end navibar">
+          <div>
+            <a class="text-light topbar" href="{% url 'home' %}">Home</a>
+          </div>
+          <div">
+            <a class="text-light topbar" href="{% url 'account_logout' %}">Logout</a>
+          </div>  
+        </div>
+        <!--<div><a class="text-light topbar" href="{% url 'home' %}">Home</a></div>
+          <div"><a class="text-light topbar" href="{% url 'account_logout' %}">Log Out</a></div>  
+        </div>-->
+      {% endif %}
+    </div>
+    {% block content %}
+    {% endblock %}
+    {% endblock %}
+    {% block extra_body %}
+    {% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  </body>
+</html>

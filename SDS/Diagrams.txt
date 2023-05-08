@@ -1,0 +1,33 @@
+Classes:
+
+ExamCohort..
+	Attributes: cohortName, slug, evaluator, section, students
+	Methods: addCohort, deleteCohort, addStudents, addAssessment, viewStudents, viewAssessments
+
+Assessment..
+	Attributes: title, totalMarks, availableDateTime, dueDateTime, evaluator, cohortName, section
+	Methods: addAssessment, deleteAssessment, editAssessment
+
+Question..
+	Attributes: questionFormat, questionTitle, mark, time, specifiedAnswer(private), questionNumber
+	Methods: addQuestion, selectFormat, editQuestion, deleteQuestion, specifyAnswer
+
+MCQ
+	Attributes: questionTitle, mark, time, specifiedAnswer(private), questionNumber
+	Methods: addQuestion, editQuestion, deleteQuestion, specifyAnswer
+
+Micro-Viva
+	Attributes: questionTitle, mark, time, specifiedAnswer(private), questionNumber
+	Methods: addQuestion, editQuestion, deleteQuestion, specifyAnswer
+
+Students
+	Attributes: email, name, cohortName, cohortSection
+	Methods: getEmail, getName, takeExam
+
+Evalutor
+	Attributes: email, name, cohortName, cohortSection
+	Methods: addCohort, deleteCohort, addStudent, addAssessment, viewStudents, viewAssessments
+
+Spreadsheet
+	Attributes: studentEmail, studentName, mark, cohortName, cohortSection, assessmentName
+	Methods: getMark, getStudent

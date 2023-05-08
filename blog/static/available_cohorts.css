@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+  }
+  .navbar{
+    display: flex;
+    background: lightgray;
+  }
+  .navbar a{
+    font-size: 27px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+  }
+  .navbar a img{
+    margin-right: 10px;
+    opacity: 8;
+  }
+  .btn-add{
+    font-size: 25px;
+    font-weight: 700;
+    color: #fff;
+    background-color: grey;
+    border-radius: 40%;
+    padding-top: 2px;
+  }
+  .btn-add:hover {
+    background-color: black;
+    color: white;
+    transition: .8s;
+  }
+  .btn-account{
+    font-size: 25px;
+    font-weight: 700;
+    color: #fff;
+    background-color: grey;
+    border-radius: 40%;
+    padding-top: 2px;
+  }
+  .btn-account:hover {
+    color: white;
+    background-color: black;
+    transition: .8s;
+  }
+  .text-light{
+    text-decoration: none;
+  }
+  .topbar {
+    align-items: center;
+  }
+  .topbar a p{
+    color: #535D5F;
+    font-size: 18px;
+    font-weight: 450;
+    margin-bottom: 0px;
+  }
+  .top-content {
+    background: #ddd8d8;
+  }
+  .topbar a p:hover{
+    color: black;
+  }
+  .bodypart{
+    padding-top: 30px;
+  }
+  .card{
+    width: 65%;
+    margin: auto;
+    box-shadow: #113065;
+   }
+   .card:hover{
+    width: 68%;
+    transition: .3s;
+    border: 2px solid black;
+   }
+   .card-header{
+    background: #113065;
+    font-size: 22px;
+    font-weight: bolder;
+    width: 100%;
+   }
+   .bodypart a {
+    text-decoration: none;
+  }
+  
+   .card-header p{
+    color: white;
+   }
+   .card-body p{
+    color: black;
+   }
+   .card-body h5{
+    color: black;
+   }
+   .card-body{
+    background: #AAD6EC;
+   }
+   p{
+    margin-bottom: 0px;
+   }

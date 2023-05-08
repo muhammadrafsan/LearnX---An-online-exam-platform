@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment</title>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+    <link rel="stylesheet" href="{% static 'inside_assessment_evaluator.css' %}">
+</head>
+<body>
+    <header>
+        <div class="top-content">
+          {% if user.is_authenticated %}
+          <div class="container d-flex justify-content-between p-2">
+            <a class="navbar-brand" href="#">
+              <img src="{% static 'images/transparent_logo.png' %}" width="105px" height="50px" alt="" class="d-inline-block align-text-top">
+            </a>
+            <div class="d-grid gap-2 d-md-flex">
+              <div class="topbar d-md-flex">
+                <a class="text-light" href="{%  url 'view_assessment' assesObj.cohort.slug %}"><p>Go Back</p></a>&emsp;&emsp;
+                <a class="text-light" href="{% url 'home' %}"><p>Home</p></a>&emsp;&emsp;
+                <a class="text-light" href="{% url 'account_logout' %}"><p>Logout</p></a>
+              </div>  
+            </div>
+          {% endif %}
+        </div>
+    </header>
+
+    <section class="mainbody">
+        <h3 style="text-align: center;">{{assesObj.assesment_title}}</h3>
+        <div class="dueavailable">
+           
+            <div style="padding-left: 20px;">
+                <p>Available Time: {{ assesObj.available_time }}</p>
+                <p>Available Date: {{ assesObj.available_date }}</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="addquestions text-center">
+        <div>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-question" data-bs-toggle="modal" data-bs-target="#mcqModal" style="margin-right: 5px";>Add MCQs</button>
+
+            <button type="button" class="btn btn-question" data-bs-toggle="modal" data-bs-target="#vivaModal" style="margin-left: 5px";>Add Micro-viva</button> <br><br>
+
+            <!-- Modal -->
+            <div class="modal fade" id="mcqModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add MCQs to the assessment</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{% url 'InsideAssesment' assesObj.slug %}" method="POST" class="p-2">
+                            {% csrf_token %}
+                            <label for="mcqquestion">Question</label>
+                            <input type="text" class="form-control" name="mcqqs" placeholder="Enter the Question" required> <br>
+                            <div class="options">
+                                <label class="form-check-label" for="op1">Option A</label> 
+                                <input class="optionA" type="text" value="" name="opA" required><br>
+                                
+                                <label class="form-check-label" for="op2">Option B</label> 
+                                <input class="optionB" type="text" value="" name="opB" required><br>
+                        
+                                <label class="form-check-label" for="op3">Option C</label> 
+                                <input class="optionC" type="text" value="" name="opC" required><br>
+                        
+                                <label class="form-check-label" for="op4">Option D</label> 
+                                <input class="optionD" type="text" value="" name="opD" required> <br>
+                            </div> <br>
+                            
+                    
+                            <label for="mcqquestion">Specify correct answer</label>
+                            <input type="text" class="form-control" name="correct" placeholder="Enter the Correct Answer" required> <br>
+
+                            <label for="mcqquestion">Total mark</label>
+                            <input type="number" class="form-control" step="0.1" name="marks" placeholder="Enter the mark" required> <br>
+                            <!--<label for="cars">Choose a question type:</label> 
+                            <select name="mcqtype" id="ques">
+                                <option value="mcq">MCQ</option>
+                                <option value="viva">VIVA</option>
+                            </select>-->
+                            </div>
+                            <div class="modal-footer">
+                            
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </form>
+                </div>
+                </div>
+            </div>
+
+
+            <div class="modal fade" id="vivaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add micro-viva to the assessment</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{% url 'InsideAssesment' assesObj.slug %}" method="POST" class="p-2">
+                            {% csrf_token %}
+                            <label for="mcqquestion">Viva Question</label>&emsp;
+                            <input type="button" value="Start Recording"  onclick="record()"><br>  <br>
+                            <input type="text" name="vivaques" id="speechToText" placeholder="Viva Question" readonly>  
+                            <br> <br>
+                            <label for="mcqquestion">Total mark</label>
+                            <input type="number" class="form-control" step="0.1" name="vivamarks" placeholder="Enter the mark" required> <br>
+                            <p>* Write all possible correct answers separated by commas (don't use space).</p>
+                            <p>* The student will be graded according to your specified answers.</p>
+                            <label for="mcqquestion">Specify correct answer</label>
+                            <input type="text" class="form-control" name="vivacorrect" placeholder="Enter the Correct Answer" required> <br>
+                            
+                            <div class="modal-footer">
+                            
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </form>
+                </div>
+                </div>
+            </div>
+        </div>
+
+    <section class="questions">
+        <div class="container p-5">
+            <div>
+                {% for i in viewMcq %}
+                <div style="display: flex;">
+                    <b>Q. {{ i.question }} &emsp; Mark: {{ i.marks }}</b> &emsp; 
+                    <form action ="{% url 'delete_mcq' i.id %}" method="POST">
+                        {% csrf_token %}
+                    <input type="submit" name="delete_mcq" value="Remove"></a></form>
+                    
+                </div> <br>
+                <div style="padding-left: 25px;" id="options">
+                    <input type="radio" id="opa" name="option" value="Option A">
+                    <label for="html">{{ i.optionA }}</label><br>
+                    <input type="radio" id="opb" name="option" value="Option B">
+                    <label for="html">{{ i.optionB }}</label><br>
+                    <input type="radio" id="opc" name="option" value="Option C">
+                    <label for="html">{{ i.optionC }}</label><br>
+                    <input type="radio" id="opd" name="option" value="Option D">
+                    <label for="html">{{ i.optionD }}</label><br>
+                </div> <br>
+                <div><strong>Correct Answer: </strong>{{ i.correctAns }} </div> <br><br>
+                
+                {% endfor %}
+            </div>
+            <div>
+                {% for i in viewViva %}
+                <div>
+                    <p>Question: {{i.vivaQuestion}} &emsp; &emsp;</p>
+                    <form action ="{% url 'delete_viva' i.id %}" method="POST">
+                    <input type="button" name="hearquestion" value="Listen Question" onclick="listenAudio('{{i.vivaQuestion}}')">
+                        {% csrf_token %}
+                    <input style="margin-left: 10px;" type="submit" name="delete_viva" value="Remove"></form>
+                </div>
+                 <br>
+                 
+                <!--<input type="button" value="LISTEN"  onclick=listenAudio("UnderDevelopment")> <br><br>--><br>
+                
+                {%endfor%}
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+
+        //let viva = queViva();
+        
+        /*function queViva(){
+            console.log("Que VIva");
+          var viva_list = [];
+          for (let i = 0; i < v_list.length; i++)
+          {
+            console.log("value of i is" + v_list.length);
+            
+            var temp = [{
+              vivaquestion: v_list[i],
+              mark: score[i]
+             }];
+            viva_list.push(temp);
+          }
+          console.log(temp);
+          listenAudio(temp);
+          console.log(viva_list);
+          //shuffleArray(ques_list);
+          return viva_list;
+          }*/
+
+          
+        var recognition = new webkitSpeechRecognition();
+        //It records an audio
+        function record() {
+            
+            recognition.lang = "en-GB";
+
+            recognition.onresult = function(event) {
+                console.log(event);
+                document.getElementById('speechToText').value = event.results[0][0].transcript;
+            }
+            recognition.start();
+        }
+        //It plays the recorded audio
+        function listenAudio(speech) {
+           // console.log(v_list);
+            let question = speech;
+            var msg = new SpeechSynthesisUtterance();
+            msg.text = question;
+            window.speechSynthesis.speak(msg);
+        }
+        
+    </script>
+</body>
+</html>

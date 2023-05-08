@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+  }
+  .navbar{
+    display: flex;
+    background: lightgray;
+  }
+  .navbar a{
+    font-size: 27px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+  }
+  .navbar a img{
+    margin-right: 10px;
+    opacity: 8;
+  }
+  .btn-add{
+    font-size: 25px;
+    font-weight: 700;
+    color: #fff;
+    background-color: grey;
+    border-radius: 40%;
+    padding-top: 2px;
+  }
+  .btn-add:hover {
+    background-color: black;
+    color: white;
+    transition: .8s;
+  }
+  .btn-account{
+    font-size: 25px;
+    font-weight: 700;
+    color: #fff;
+    background-color: grey;
+    border-radius: 40%;
+    padding-top: 2px;
+  }
+  .btn-account:hover {
+    color: white;
+    background-color: black;
+    transition: .8s;
+  }
+  .text-light{
+    text-decoration: none;
+  }
+  .topbar {
+    align-items: center;
+  }
+  .topbar a p{
+    color: #535D5F;
+    font-size: 18px;
+    font-weight: 450;
+    margin-bottom: 0px;
+  }
+  .top-content {
+    background: #ddd8d8;
+  }
+  .topbar a p:hover{
+    color: black;
+  }
+  .card{
+    color: white;
+    border: 5px solid lightgray;
+  }
+  .card h6{
+    color: lightgray;
+    
+  }
+  .card:hover{
+    border: 5px solid blue;
+    transition: .3s;
+}
+  .btn-primary{
+    font-weight: 500;
+    margin-right: 5px;
+  }
+  .btn-primary:hover{
+    font-weight: 500;
+    color: black;
+    background: white;
+    transition: .4s;
+  }

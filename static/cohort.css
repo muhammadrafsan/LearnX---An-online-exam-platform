@@ -1,0 +1,29 @@
+h2 {
+    text-align: center;
+    padding-top: 50px;
+}
+.form-group label{
+    font-size: 19px;
+    font-weight: 500;
+    padding-top: 10px;
+}
+form{
+    margin-left: 4%;
+    margin-right: 4%;
+}
+form div button{
+    margin-top: 25px;
+}
+.create-btn{
+    text-align: center;
+}
+.btn-primary{
+    background: #343A40;
+    font-weight: 500;
+}
+.btn-primary:hover{
+    color: #343A40;
+    background: white;
+    border: 2px solid #343A40;
+    transition: .3s;
+}
